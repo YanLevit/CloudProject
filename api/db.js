@@ -5,7 +5,7 @@ dotenv.config();
 
 export const db = mysql.createConnection({
   host:"blog.cwv83wd9elvf.eu-central-1.rds.amazonaws.com",
-  user:"admin",
+  user:process.env.DB_USER,
   password: process.env.DB_KEY,
-  database:"blog"
+  database:process.env.DB_NAME
 })
