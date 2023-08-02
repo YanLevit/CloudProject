@@ -1,5 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const Menu = ({cat}) => {
   const [posts, setPosts] = useState([]);
