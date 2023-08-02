@@ -8,9 +8,7 @@ import moment from "moment";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
 import DOMPurify from "dompurify";
-import dotenv from "dotenv";
 
-dotenv.config();
 
 const Single = () => {
   const [post, setPost] = useState({});
