@@ -16,6 +16,7 @@ const Home = () => {
         setPosts(res.data);
       } catch (err) {
         console.log(err);
+        console.log(process.env.REACT_APP_LB);
       }
     };
     fetchData();
