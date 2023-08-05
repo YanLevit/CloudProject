@@ -1,5 +1,17 @@
 import { db } from "../db.js";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+
+dotenv.config();
+
+const s3Client = new S3Client({
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  },
+  region: "eu-central-1",
+});
 
 export const getPosts = (req, res) => {
   const q = req.query.cat
@@ -17,7 +29,8 @@ export const getPost = (req, res) => {
   const q =
     "SELECT p.id, `username`, `title`, `desc`, p.img, u.img AS userImg, `cat`,`date` FROM users u JOIN posts p ON u.id = p.uid WHERE p.id = ? ";
 
-  db.query(q, [req.params.id], (err, data) => {
+      
+    db.query(q, [req.params.id], (err, data) => {
     if (err) return res.status(500).json(err);
 
     return res.status(200).json(data[0]);
@@ -28,20 +41,42 @@ export const addPost = (req, res) => {
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Not authenticated!");
 
-  jwt.verify(token, "jwtkey", (err, userInfo) => {
+  jwt.verify(token, "jwtkey", async(err, userInfo) => {
     if (err) return res.status(403).json("Token is not valid!");
 
     const q =
       "INSERT INTO posts(`title`, `desc`, `img`, `cat`, `date`,`uid`) VALUES (?)";
 
+    let imgUrl = "";
+
+    if (req.body.img) {
+      try {
+      const params = {
+        Bucket: "blogproject2023",
+        Key: Date.now().toString() + "-" + req.body.img,
+        Body: req.body.buffer,
+        ACL: "public-read",
+      };
+    const data = await s3Client.send(new PutObjectCommand(params));
+    imgUrl = data.Location;
+    console.log("imgURL:", imgUrl);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ error: "Error uploading file to S3" });
+    }
+  }
+  
+  
+
     const values = [
       req.body.title,
       req.body.desc,
-      req.body.img,
+      imgUrl,
       req.body.cat,
       req.body.date,
       userInfo.id,
     ];
+
 
     db.query(q, [values], (err, data) => {
       if (err) return res.status(500).json(err);

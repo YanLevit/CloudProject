@@ -19,8 +19,9 @@ const Write = () => {
     try {
       const formData = new FormData();
       formData.append("file", file);
-      const res = await axios.post(`${process.env.REACT_APP_LB}/upload`, formData);
-      return res.data;
+      console.log(formData);
+      const res = await axios.post("/upload", formData);
+      return res.data.location;
     } catch (err) {
       console.log(err);
     }
@@ -28,21 +29,26 @@ const Write = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
+    let imgUrl = "";
+
+    if (file) {
     const imgUrl = await upload();
+    console.log(imgUrl);
+    }
 
     try {
       state
-        ? await axios.put(`${process.env.REACT_APP_LB}/posts/${state.id}`, {
+        ? await axios.put(`/posts/${state.id}`, {
             title,
             desc: value,
             cat,
-            img: file ? imgUrl : "",
+            img: imgUrl,
           })
-        : await axios.post(`${process.env.REACT_APP_LB}/posts/`, {
+        : await axios.post("/posts/", {
             title,
             desc: value,
             cat,
-            img: file ? imgUrl : "",
+            img: imgUrl,
             date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
           });
           navigate("/")
@@ -82,7 +88,10 @@ const Write = () => {
             type="file"
             id="file"
             name=""
-            onChange={(e) => setFile(e.target.files[0])}
+            onChange={(e) => {
+              console.log(e.target.files);
+              setFile(e.target.files[0])
+            }}
           />
           <label className="file" htmlFor="file">
             Upload Image

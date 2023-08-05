@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
-import Logo from "../img/logo.png";
+
 
 const Navbar = () => {
   const { currentUser, logout } = useContext(AuthContext);
@@ -11,7 +11,7 @@ const Navbar = () => {
       <div className="container">
         <div className="logo">
           <Link to="/">
-          <img src={Logo} alt="" />
+          <img src="https://blogproject2023.s3.eu-central-1.amazonaws.com/img/logo.png" alt="" />
           </Link>
         </div>
         <div className="links">

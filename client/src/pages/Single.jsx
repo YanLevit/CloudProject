@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Edit from "../img/edit.png";
-import Delete from "../img/delete.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Menu from "../components/Menu";
 import axios from "axios";
@@ -23,7 +21,7 @@ const Single = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_LB}/posts/${postId}`);
+        const res = await axios.get(`/posts/${postId}`);
         setPost(res.data);
       } catch (err) {
         console.log(err);
@@ -34,7 +32,7 @@ const Single = () => {
 
   const handleDelete = async ()=>{
     try {
-      await axios.delete(`${process.env.REACT_APP_LB}/posts/${postId}`);
+      await axios.delete(`/posts/${postId}`);
       navigate("/")
     } catch (err) {
       console.log(err);
@@ -62,9 +60,9 @@ const Single = () => {
           {currentUser.username === post.username && (
             <div className="edit">
               <Link to={`/write?edit=2`} state={post}>
-                <img src={Edit} alt="" />
+                <img src="https://blogproject2023.s3.eu-central-1.amazonaws.com/img/edit.png" alt="" />
               </Link>
-              <img onClick={handleDelete} src={Delete} alt="" />
+              <img onClick={handleDelete} src="https://blogproject2023.s3.eu-central-1.amazonaws.com/img/delete.png" alt="" />
             </div>
           )}
         </div>

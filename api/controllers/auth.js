@@ -41,8 +41,9 @@ export const login = (req, res) => {
 
     if (!isPasswordCorrect)
       return res.status(400).json("Wrong username or password!");
-
+    try {
     const token = jwt.sign({ id: data[0].id }, "jwtkey");
+    console.log("token:" , token);
     const { password, ...other } = data[0];
 
     res
@@ -51,8 +52,13 @@ export const login = (req, res) => {
       })
       .status(200)
       .json(other);
-  });
+    } catch (err) {
+      console.error("Error creating JWT:", err);
+      res.status(500).json({ error: "Error signing token", raw: err.message });
+  }
+});
 };
+
 
 export const logout = (req, res) => {
   res.clearCookie("access_token",{
