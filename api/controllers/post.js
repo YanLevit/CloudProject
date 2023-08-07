@@ -30,7 +30,7 @@ export const getPosts = (req, res) => {
             data.map(async (post) => {
                 const s3res = await s3Client.send(
                     new GetObjectCommand({
-                        Bucket: process.env.AWS_BUCKET_NAME,
+                        Bucket: process.env.AWS_STORAGE_BUCKET_NAME,
                         Key: post.img,
                     })
                 );
@@ -51,7 +51,7 @@ export const getPost = (req, res) => {
         const post = data[0];
         const s3res = await s3Client.send(
             new GetObjectCommand({
-                Bucket: 'blogproject2023',
+                Bucket: process.env.AWS_STORAGE_BUCKET_NAME,
                 Key: post.img,
             })
         );
@@ -63,7 +63,7 @@ export const getPost = (req, res) => {
 const uploadFileToS3 = async (name, file) => {
     try {
         const params = {
-            Bucket: process.env.AWS_BUCKET_NAME,
+            Bucket: process.env.AWS_STORAGE_BUCKET_NAME,
             Key: name,
             Body: file,
             ACL: 'public-read',
