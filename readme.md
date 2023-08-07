@@ -15,7 +15,6 @@ Image Storage: Images associated with blog posts are stored in an S3 bucket, whi
 Servers: The application is hosted on CentOS 7 EC2 instances. An Elastic Load Balancer (ELB) is set up to distribute incoming traffic across multiple instances, ensuring high availability and improved performance. Additionally, a separate backup server is maintained to ensure redundancy and disaster recovery.
 
 Architecture
-Architecture Diagram
 
 User interacts with the React frontend through a web browser.
 React frontend sends API requests to the Node.js backend.
