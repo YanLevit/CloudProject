@@ -6,10 +6,10 @@ import {
     GetObjectCommand,
 } from '@aws-sdk/client-s3';
 import dotenv from 'dotenv';
-import multer from 'multer';
+
 
 dotenv.config();
-const upload = multer();
+
 
 const s3Client = new S3Client({
     credentials: {
@@ -30,7 +30,7 @@ export const getPosts = (req, res) => {
             data.map(async (post) => {
                 const s3res = await s3Client.send(
                     new GetObjectCommand({
-                        Bucket: 'blogproject2023',
+                        Bucket: process.env.AWS_BUCKET_NAME,
                         Key: post.img,
                     })
                 );
@@ -63,7 +63,7 @@ export const getPost = (req, res) => {
 const uploadFileToS3 = async (name, file) => {
     try {
         const params = {
-            Bucket: 'blogproject2023',
+            Bucket: process.env.AWS_BUCKET_NAME,
             Key: name,
             Body: file,
             ACL: 'public-read',
