@@ -5,7 +5,9 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
-        "start": "nodemon index.js"
+        "start": "nodemon index.js",
+        "format": "prettier --ignore-unknown --write .",
+        "format:check": "prettier --ignore-unknown --check ."
     },
     "keywords": [],
     "author": "",

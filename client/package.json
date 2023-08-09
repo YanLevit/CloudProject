@@ -24,7 +24,9 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "format": "prettier --ignore-unknown --write .",
+        "format:check": "prettier --ignore-unknown --check ."
     },
     "eslintConfig": {
         "extends": [
