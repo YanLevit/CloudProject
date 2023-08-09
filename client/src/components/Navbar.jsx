@@ -11,7 +11,7 @@ const Navbar = () => {
                 <div className="logo">
                     <Link to="/">
                         <img
-                            src="https://blogproject2023.s3.eu-central-1.amazonaws.com/img/logo.png"
+                            src="https://blogproject2023.s3.eu-central-1.amazonaws.com/img/drops-high-resolution-logo-color-on-transparent-background.png"
                             alt=""
                         />
                     </Link>

@@ -7,8 +7,8 @@ import moment from 'moment';
 
 const Write = () => {
     const state = useLocation().state;
-    const [value, setValue] = useState(state?.title || '');
-    const [title, setTitle] = useState(state?.desc || '');
+    const [value, setValue] = useState(state?.desc|| '');
+    const [title, setTitle] = useState(state?.title || '');
     const [file, setFile] = useState(null);
     const [cat, setCat] = useState(state?.cat || '');
 
@@ -114,6 +114,7 @@ const Write = () => {
                     <div className="cat">
                         <input
                             type="radio"
+                            style={{ accentColor: '#BA3B0A' }}
                             checked={cat === 'art'}
                             name="cat"
                             value="art"
@@ -125,6 +126,7 @@ const Write = () => {
                     <div className="cat">
                         <input
                             type="radio"
+                            style={{ accentColor: '#BA3B0A' }}
                             checked={cat === 'science'}
                             name="cat"
                             value="science"
@@ -136,6 +138,7 @@ const Write = () => {
                     <div className="cat">
                         <input
                             type="radio"
+                            style={{ accentColor: '#BA3B0A' }}
                             checked={cat === 'technology'}
                             name="cat"
                             value="technology"
@@ -147,6 +150,7 @@ const Write = () => {
                     <div className="cat">
                         <input
                             type="radio"
+                            style={{ accentColor: '#BA3B0A' }}
                             checked={cat === 'cinema'}
                             name="cat"
                             value="cinema"
@@ -158,6 +162,7 @@ const Write = () => {
                     <div className="cat">
                         <input
                             type="radio"
+                            style={{ accentColor: '#BA3B0A' }}
                             checked={cat === 'design'}
                             name="cat"
                             value="design"
@@ -169,6 +174,7 @@ const Write = () => {
                     <div className="cat">
                         <input
                             type="radio"
+                            style={{ accentColor: '#BA3B0A' }}
                             checked={cat === 'food'}
                             name="cat"
                             value="food"
