@@ -20,24 +20,42 @@ $lightGreen: #b9e7e7;
             height: 100vh;
             background-color: #ffa458;
 
-            h1 {
-                font-size: 20px;
-                color: #ba3b0a;
-                margin-bottom: 20px;
-            }
-
             form {
                 display: flex;
                 flex-direction: column;
                 padding: 50px;
                 background-color: white;
-                width: 200px;
+                width: 300px;
+                height: 350px;
                 gap: 20px;
+                align-items: center;
+                justify-content: center;
+                border-radius: 20px;
+                border: #ba3b0a;
+                box-shadow: 0px 0px 10px 0px #ba3b0a;
 
-                input {
-                    padding: 10px;
-                    border: none;
-                    border-bottom: 1px solid gray;
+                h1 {
+                    font-size: 2em;
+                    color: #ba3b0a;
+                    margin-bottom: 20px;
+                }
+
+                .form_input {
+                    position: relative;
+                    border-bottom: 2px solid gray;
+
+                    input {
+                        padding: 10px;
+                        border: none;
+                        font-size: 1em;
+                    }
+
+                    .icon {
+                        position: absolute;
+                        right: 5px;
+                        font-size: 1.2em;
+                        line-height: 50px;
+                    }
                 }
 
                 button {
@@ -46,6 +64,9 @@ $lightGreen: #b9e7e7;
                     background-color: #ba3b0a;
                     cursor: pointer;
                     color: white;
+                    width: 40%;
+                    border-radius: 10px;
+                    border: #ba3b0a;
 
                     &:hover {
                         color: black;
@@ -197,6 +218,7 @@ $lightGreen: #b9e7e7;
                             background-color: white;
                             border: 1px solid #ba3b0a;
                             color: #ba3b0a;
+                            margin-top: 10px;
 
                             &:hover {
                                 border: 1px solid white;

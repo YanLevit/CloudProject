@@ -32,29 +32,44 @@ const Register = () => {
 
     return (
         <div className="auth">
-            <h1>Register</h1>
             <form>
-                <input
-                    required
-                    type="text"
-                    placeholder="username"
-                    name="username"
-                    onChange={handleChange}
-                />
-                <input
-                    required
-                    type="email"
-                    placeholder="email"
-                    name="email"
-                    onChange={handleChange}
-                />
-                <input
-                    required
-                    type="password"
-                    placeholder="password"
-                    name="password"
-                    onChange={handleChange}
-                />
+                <h1>Register</h1>
+                <div className="form_input">
+                    <span className="icon">
+                        <ion-icon name="person-sharp"></ion-icon>
+                    </span>
+                    <input
+                        required
+                        type="text"
+                        placeholder="Username"
+                        name="username"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="form_input">
+                    <span className="icon">
+                        <ion-icon name="mail-sharp"></ion-icon>
+                    </span>
+                    <input
+                        required
+                        type="email"
+                        placeholder="Email"
+                        name="email"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="form_input">
+                    <span className="icon">
+                        <ion-icon name="lock-closed-sharp"></ion-icon>
+                    </span>
+                    <input
+                        required
+                        type="password"
+                        placeholder="Password"
+                        name="password"
+                        onChange={handleChange}
+                    />
+                </div>
                 <button onClick={handleSubmit}>Register</button>
                 {err && <p>{err}</p>}
                 <span>

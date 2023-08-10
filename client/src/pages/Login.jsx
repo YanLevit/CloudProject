@@ -30,22 +30,32 @@ const Login = () => {
     };
     return (
         <div className="auth">
-            <h1>Login</h1>
             <form>
-                <input
-                    required
-                    type="text"
-                    placeholder="username"
-                    name="username"
-                    onChange={handleChange}
-                />
-                <input
-                    required
-                    type="password"
-                    placeholder="password"
-                    name="password"
-                    onChange={handleChange}
-                />
+                <h1>Login</h1>
+                <div className="form_input">
+                    <span className="icon">
+                        <ion-icon name="person-sharp"></ion-icon>
+                    </span>
+                    <input
+                        required
+                        type="text"
+                        placeholder="Username"
+                        name="username"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="form_input">
+                    <span className="icon">
+                        <ion-icon name="lock-closed-sharp"></ion-icon>
+                    </span>
+                    <input
+                        required
+                        type="password"
+                        placeholder="Password"
+                        name="password"
+                        onChange={handleChange}
+                    />
+                </div>
                 <button onClick={handleSubmit}>Login</button>
                 {err && <p>{err}</p>}
                 <span>
