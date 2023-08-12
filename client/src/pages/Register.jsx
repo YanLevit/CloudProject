@@ -21,7 +21,7 @@ const Register = () => {
         e.preventDefault();
         try {
             await axios.post(
-                `${process.env.REACT_APP_LB}/auth/register`,
+                `/auth/register`,
                 inputs
             );
             navigate('/login');
