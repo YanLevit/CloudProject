@@ -46,5 +46,5 @@
             "last 1 safari version"
         ]
     },
-    "proxy": "http://localhost:8800/api/"
+    "proxy": "http://cloud-project-LB-463606667.eu-central-1.elb.amazonaws.com:8800/api/"
 }
